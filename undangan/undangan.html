@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Undangan Pernikahan — Nama &amp; Nama</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#b76e79;
+      --muted:#6b7280;
+      --bg:#fff8f7;
+      --card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Arial; margin:0; background:linear-gradient(180deg,#fff8f7 0%, #fdf7f8 40%); color:#111}
+    .container{max-width:980px;margin:24px auto;padding:20px}
+
+    /* Header / Hero */
+    .hero{display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:center}
+    .couple{background:var(--card);padding:28px;border-radius:14px;box-shadow:0 6px 18px rgba(15,15,20,0.06)}
+    .couple h1{font-family:'Playfair Display',serif;font-size:34px;margin:0 0 6px}
+    .couple p.lead{color:var(--muted);margin:0 0 12px}
+    .date-pill{display:inline-block;background:linear-gradient(90deg,var(--accent),#f29c9c);color:#fff;padding:8px 12px;border-radius:999px;font-weight:600}
+    .photo{width:100%;height:320px;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#f7dede, #fff);display:flex;align-items:center;justify-content:center}
+    .photo img{width:100%;height:100%;object-fit:cover}
+
+    /* Info section */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 12px rgba(12,12,16,0.04);text-align:center}
+    .card h4{margin:6px 0 0;font-size:15px}
+    .card p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+    /* Countdown */
+    .countdown{display:flex;gap:10px;justify-content:center;margin:18px 0}
+    .countdown .box{background:linear-gradient(180deg,#fff,#fff);padding:12px;border-radius:10px;min-width:68px}
+    .countdown .num{font-weight:700;font-size:20px}
+    .countdown .label{font-size:12px;color:var(--muted)}
+
+    /* Details */
+    section.details{display:flex;gap:18px;margin-top:24px}
+    .details .left{flex:1}
+    .details .right{width:320px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+
+    /* RSVP form */
+    form.rsvp{display:flex;flex-direction:column;gap:10px}
+    input,textarea,select{padding:10px;border-radius:8px;border:1px solid #e6e6ea;font-size:14px}
+    button.btn{background:var(--accent);color:#fff;padding:10px 12px;border-radius:10px;border:none;font-weight:600;cursor:pointer}
+
+    footer{margin:36px 0;text-align:center;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      .details{flex-direction:column}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .photo{height:240px}
+      .countdown{flex-wrap:wrap}
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="hero">
+      <div class="couple">
+        <p style="margin:0;color:var(--muted);letter-spacing:1px">Dengan Rahmat Tuhan Yang Maha Esa</p>
+        <h1>Aisyah &amp; Rizky</h1>
+        <p class="lead">Kami mengundang keluarga dan sahabat hadir pada acara pernikahan kami.</p>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:10px">
+          <div class="date-pill">Sabtu, 10 Januari 2026</div>
+          <div style="margin-left:auto;color:var(--muted)">Mulai 10:00 WIB</div>
+        </div>
+
+        <div class="grid-3" style="margin-top:14px">
+          <div class="card">
+            <strong>Akad</strong>
+            <p>10:00 - Masjid Al-Ikhlas</p>
+          </div>
+          <div class="card">
+            <strong>Resepsi</strong>
+            <p>12:00 - Gedung Serbaguna</p>
+          </div>
+          <div class="card">
+            <strong>Konfirmasi</strong>
+            <p>RSVP via form di kanan</p>
+          </div>
+        </div>
+
+        <div class="countdown" aria-hidden="false">
+          <div class="box"><div class="num" id="days">0</div><div class="label">Hari</div></div>
+          <div class="box"><div class="num" id="hours">0</div><div class="label">Jam</div></div>
+          <div class="box"><div class="num" id="mins">0</div><div class="label">Menit</div></div>
+          <div class="box"><div class="num" id="secs">0</div><div class="label">Detik</div></div>
+        </div>
+
+      </div>
+
+      <div>
+        <div class="photo" aria-hidden="false">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Couple photo">
+        </div>
+
+        <div style="margin-top:12px;background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 12px rgba(12,12,16,0.04)">
+          <h4 style="margin:0">Lagu Pilihan</h4>
+          <p style="margin:6px 0 10px;color:var(--muted)">Ketuk untuk putar / jeda</p>
+          <button id="play" class="btn" style="width:100%">Putar Musik</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="details">
+      <div class="left">
+        <article style="background:var(--card);padding:18px;border-radius:12px;margin-bottom:12px;box-shadow:0 6px 12px rgba(12,12,16,0.04)">
+          <h3>Detail Acara</h3>
+          <p style="color:var(--muted)">Akad nikah akan dilaksanakan di Masjid Al-Ikhlas, dilanjutkan resepsi di Gedung Serbaguna. Mohon hadir 15 menit lebih awal.</p>
+          
+          <h4 style="margin-top:12px">Lokasi</h4>
+          <p style="color:var(--muted);margin:6px 0">Jl. Kenangan No.12, Kota Contoh</p>
+          <div style="border-radius:10px;overflow:hidden;margin-top:8px">
+            <!-- ganti src iframe dengan link Google Maps lokasi Anda -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d..." width="100%" height="200" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </article>
+
+        <article style="background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 12px rgba(12,12,16,0.04)">
+          <h3>Galeri</h3>
+          <div class="gallery" style="margin-top:8px">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop&s=1" alt="foto1">
+            <img src="https://images.unsplash.com/photo-1494415850870-2d9a7d3f0ae6?q=80&w=800&auto=format&fit=crop&s=2" alt="foto2">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop&s=3" alt="foto3">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop&s=4" alt="foto4">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop&s=5" alt="foto5">
+            <img src="https://images.unsplash.com/photo-1494415850870-2d9a7d3f0ae6?q=80&w=800&auto=format&fit=crop&s=6" alt="foto6">
+          </div>
+        </article>
+      </div>
+
+      <aside class="right">
+        <div style="background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 12px rgba(12,12,16,0.04)">
+          <h3>Konfirmasi Kehadiran (RSVP)</h3>
+          <form id="rsvp" class="rsvp" onsubmit="return false">
+            <input id="nama" placeholder="Nama lengkap" required>
+            <select id="hadir">
+              <option value="Hadir">Hadir</option>
+              <option value="Berhalangan">Berhalangan</option>
+            </select>
+            <textarea id="ucapan" rows="3" placeholder="Ucapan / pesan (opsional)"></textarea>
+            <button id="send" class="btn">Kirim Konfirmasi</button>
+            <p id="msg" style="color:var(--muted);font-size:13px;margin:6px 0 0"></p>
+          </form>
+        </div>
+
+        <div style="margin-top:12px;background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 12px rgba(12,12,16,0.04)">
+          <h4>Catatan</h4>
+          <p style="color:var(--muted);font-size:13px;margin:6px 0">Silakan isi form RSVP. Data akan tersimpan di perangkat Anda (localStorage).</p>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <p>Terima kasih — Sampai jumpa di hari bahagia kami ❤️</p>
+    </footer>
+  </main>
+
+  <audio id="bgm" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0fc8f0e47b.mp3?filename=romantic-11279.mp3" preload="none"></audio>
+
+  <script>
+    // COUNTDOWN
+    const eventDate = new Date('2026-01-10T10:00:00'); // <<-- ganti sesuai tanggal & waktu
+    function updateCountdown(){
+      const now = new Date();
+      let diff = Math.max(0, eventDate - now);
+      const days = Math.floor(diff / (1000*60*60*24));
+      diff -= days*1000*60*60*24;
+      const hours = Math.floor(diff / (1000*60*60));
+      diff -= hours*1000*60*60;
+      const mins = Math.floor(diff / (1000*60));
+      diff -= mins*1000*60;
+      const secs = Math.floor(diff/1000);
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('mins').textContent = String(mins).padStart(2,'0');
+      document.getElementById('secs').textContent = String(secs).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown,1000);
+
+    // MUSIC
+    const bgm = document.getElementById('bgm');
+    const playBtn = document.getElementById('play');
+    let playing=false;
+    playBtn.addEventListener('click', ()=>{
+      if(!playing){ bgm.play(); playBtn.textContent='Jeda Musik'; playing=true}
+      else{ bgm.pause(); playBtn.textContent='Putar Musik'; playing=false}
+    });
+
+    // RSVP (simpan di localStorage sederhana)
+    const rsvpForm = document.getElementById('rsvp');
+    const msg = document.getElementById('msg');
+    document.getElementById('send').addEventListener('click', ()=>{
+      const nama = document.getElementById('nama').value.trim();
+      const hadir = document.getElementById('hadir').value;
+      const ucapan = document.getElementById('ucapan').value.trim();
+      if(!nama){ msg.textContent='Isi nama dulu ya.'; return }
+      const list = JSON.parse(localStorage.getItem('rsvp_list')||'[]');
+      list.push({nama,hadir,ucapan,ts:new Date().toISOString()});
+      localStorage.setItem('rsvp_list', JSON.stringify(list));
+      msg.textContent = 'Terima kasih — konfirmasi tersimpan.';
+      document.getElementById('nama').value=''; document.getElementById('ucapan').value='';
+    });
+  </script>
+</body>
+</html>
